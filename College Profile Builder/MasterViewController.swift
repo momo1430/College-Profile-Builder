@@ -63,20 +63,20 @@ class MasterViewController: UITableViewController
         { (action) in
             let collegeTextField = alert.textFields![0] as UITextField
             let locationTextField = alert.textFields![1] as UITextField
-            let enrollmentTextField = alert. textFields![2] as UITextField
+            let enrollmentTextField = alert.textFields![2] as UITextField
             guard let image = UIImage(named: collegeTextField.text!) else
             {
                 print("missing \(collegeTextField.text!) image")
                 return
             }
-            if let population = Int(enrollmentTextField.text!)
+            if let enrollment = Int(enrollmentTextField.text!)
             {
                 let college = College(name: collegeTextField.text!,
                                       location: locationTextField.text!,
                                       enrollment: enrollment,
                                       image: UIImagePNGRepresentation(image)!)
                 self.objects.append(college)
-                self.tableView.reloadDate()
+                self.tableView.reloadData()
             }
         }
         alert.addAction(insertAction)

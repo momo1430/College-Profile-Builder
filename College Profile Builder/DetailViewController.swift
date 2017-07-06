@@ -31,7 +31,7 @@ class DetailViewController: UIViewController
 
     @IBAction func onSaveButtonTapped(_ sender: Any)
     {
-        if let city = self.detailItem {
+        if let college = self.detailItem {
             college.name = collegeTextField.text!
             college.location = locationTextField.text!
             college.enrollment = Int(enrollmentTextField.text!)!

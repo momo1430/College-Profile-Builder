@@ -15,7 +15,7 @@ class College: NSObject
     var enrollment = Int()
     var image = Data()
     
-    convenience init(college: String, location: String, population: Int, image: Data)
+    convenience init(name: String, location: String, enrollment: Int, image: Data)
     {
         self.init()
         self.name = name
