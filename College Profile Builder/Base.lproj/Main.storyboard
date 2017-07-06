@@ -65,6 +65,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyB-3W-S6v">
                                 <rect key="frame" x="170" y="401" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="onSaveButtonTapped:" destination="JEX-9P-axG" eventType="touchUpInside" id="hYh-TD-rFB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +86,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="collegeTextField" destination="Wcn-Sp-1Fb" id="hdo-sO-BM2"/>
+                        <outlet property="enrollmentTextField" destination="9og-KO-lAr" id="zyE-bR-z2z"/>
+                        <outlet property="imageView" destination="O55-Ll-KTM" id="jps-sW-oAX"/>
+                        <outlet property="locationTextField" destination="gvd-UC-k7u" id="RjV-qA-Fda"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
