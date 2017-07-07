@@ -13,9 +13,11 @@ class DetailViewController: UIViewController
     @IBOutlet weak var collegeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enrollmentTextField: UITextField!
+    @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
     var detailItem: College?
+        
     {
         didSet
         {
@@ -35,6 +37,7 @@ class DetailViewController: UIViewController
             college.name = collegeTextField.text!
             college.location = locationTextField.text!
             college.enrollment = Int(enrollmentTextField.text!)!
+            college.website = websiteTextField.text!
             college.image = UIImagePNGRepresentation(imageView.image!)!
         }
     }
@@ -46,7 +49,6 @@ class DetailViewController: UIViewController
     
     func configureView()
     {
-        //Update the user interface for the detail item
         if let college = self.detailItem
         {
             if collegeTextField != nil
@@ -54,8 +56,16 @@ class DetailViewController: UIViewController
                 collegeTextField.text = college.name
                 locationTextField.text = college.location
                 enrollmentTextField.text = String(college.enrollment)
+                websiteTextField.text = college.website
                 imageView.image = UIImage(data: college.image)
             }
         }
+    }
+    
+    
+    @IBAction func onGoButtonTapped(_ sender: Any)
+    {
+        let website1 = URL(string: websiteTextField.text!)!
+        UIApplication.shared.open(website1, options: [:], completionHandler: nil)
     }
 }
