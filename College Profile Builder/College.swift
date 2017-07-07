@@ -10,11 +10,11 @@ import UIKit
 
 class College: NSObject
 {
-    var name = String()
-    var location = String()
-    var enrollment = Int()
-    var website = String()
-    var image = Data()
+    dynamic var name = String()
+    dynamic var location = String()
+    dynamic var enrollment = Int()
+    dynamic var website = String()
+    dynamic var image = Data()
     
     convenience init(name: String, location: String, enrollment: Int, website: String, image: Data)
     {

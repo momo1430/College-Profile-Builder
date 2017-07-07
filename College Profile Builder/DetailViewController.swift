@@ -33,9 +33,11 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureView()
     }
 
+
     @IBAction func onSaveButtonTapped(_ sender: Any)
     {
-        if let college = self.detailItem {
+        if let college = self.detailItem
+        {
             college.name = collegeTextField.text!
             college.location = locationTextField.text!
             college.enrollment = Int(enrollmentTextField.text!)!
