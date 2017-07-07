@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController
+class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var collegeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -16,6 +16,7 @@ class DetailViewController: UIViewController
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    let imagePicker = UIImagePickerController()
     var detailItem: College?
         
     {
@@ -28,6 +29,7 @@ class DetailViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        imagePicker.delegate = self
         configureView()
     }
 
@@ -67,5 +69,20 @@ class DetailViewController: UIViewController
     {
         let website1 = URL(string: websiteTextField.text!)!
         UIApplication.shared.open(website1, options: [:], completionHandler: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        imagePicker.dismiss(animated: true)
+        {
+            let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.imageView.image = selectedImage
+        }
+    }
+    
+    @IBAction func onPhotoLibraryButtonTapped(_ sender: Any)
+    {
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
 }
