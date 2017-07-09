@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class College: NSObject
+class College: Object
 {
     dynamic var name = String()
     dynamic var location = String()

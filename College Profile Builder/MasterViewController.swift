@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MasterViewController: UITableViewController
 {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
-
+    let realm = try! Realm()
+    lazy var colleges: Results<College> =
+    {
+        self.realm.objects(College.self)
+    }()
 
     override func viewDidLoad()
     {
@@ -26,6 +31,11 @@ class MasterViewController: UITableViewController
         {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+        
+        for college in colleges
+        {
+            objects.append(college)
         }
     }
 
@@ -82,6 +92,10 @@ class MasterViewController: UITableViewController
                                       website: websiteTextField.text!,
                                       image: UIImagePNGRepresentation(image)!)
                 self.objects.append(college)
+                try! self.realm.write
+                {
+                    self.realm.add(college)
+                }
                 self.tableView.reloadData()
             }
         }
@@ -131,7 +145,11 @@ class MasterViewController: UITableViewController
     {
         if editingStyle == .delete
         {
-            objects.remove(at: indexPath.row)
+            let college = objects.remove(at: indexPath.row) as! College
+            try! self.realm.write
+            {
+                self.realm.delete(college)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert
         {
